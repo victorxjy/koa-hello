@@ -1,4 +1,3 @@
-const { resolve } = require('path');
 const path = require('path');
 
 module.exports = {
@@ -16,22 +15,7 @@ module.exports = {
     },
     resolve: {
         alias: {
-            '@': path.resolve(__dirname, './')
-        },
-        fallback: {
-            assert: false,
-            buffer: false,
-            crypto: false,
-            fs: false,
-            http: false,
-            net: false,
-            os: false,
-            querystring: false,
-            path: false,
-            stream: false,
-            url: false,
-            util: false,
-            zlib: false,
+            '@': path.resolve(__dirname, './src')
         }
     }
 };
