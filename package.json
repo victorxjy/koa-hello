@@ -2,9 +2,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "node src/index.js",
+    "test": "mocha",
     "build": "webpack",
-    "start": "node dist/main.js",
-    "test": "mocha"
+    "start": "node dist/main.js"
   },
   "dependencies": {
     "koa": "^2.13.4",
