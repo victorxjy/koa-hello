@@ -1,6 +1,6 @@
 # koa-hello
 
-> clone this as a cli to start your nown koa app
+> clone this as a cli to start your own koa app
 
 ## init
 
