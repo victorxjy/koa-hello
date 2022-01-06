@@ -1,4 +1,4 @@
-const path = require('path');
+const fs = require('fs');
 
 const router = require('koa-router')();
 
@@ -10,9 +10,9 @@ function addRoutes(router, routes) {
     })
 }
 
-let enableRoutes = [
-    require('./routes/hello'),
-];
+let enableRoutes = fs.readdirSync('./src/routes')
+    .filter(f => f.endsWith('.js'))
+    .map(f => require('./routes/' + f));
 enableRoutes.forEach(routes => addRoutes(router, routes));
 
 module.exports = (dir) => {
