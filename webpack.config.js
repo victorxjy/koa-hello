@@ -3,10 +3,18 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     target: 'node',
-    entry: './src/index.js',
+    entry: {
+        main: './src/index.js'
+    },
     output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        filename: '[name].js',
+        path: path.resolve(__dirname, 'dist'),
+        clean: true
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
     },
     module: {
         rules: [
