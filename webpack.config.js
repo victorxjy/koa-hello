@@ -3,6 +3,9 @@ const path = require('path');
 module.exports = {
     mode: 'production',
     target: 'node',
+    cache: {
+        type: 'memory'
+    },
     entry: {
         main: './src/index.js'
     },
