@@ -17,7 +17,6 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/index.js --watch src/",
     "test": "cross-env NODE_ENV=test mocha",
-    "build": "webpack",
-    "start": "node dist/main.js"
+    "prod": "cross-env NODE_ENV=production pm2 start src/index.js"
   }
 }

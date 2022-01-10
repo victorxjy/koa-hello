@@ -8,7 +8,7 @@
 yarn install
 ```
 
-## run
+## development
 
 ```bash
 yarn run dev
@@ -20,18 +20,15 @@ yarn run dev
 yarn run test
 ```
 
-## distribute
+## production
 
-run the script `build` to get the main file:
-
-```bash
-yarn run build
-```
-
-then there is a **main.js** in the dir **./dist**. you can run it by script `start`:
+Assuming you have installed `pm2`, you can start the production server by script `prod`:
 
 ```bash
-yarn run start
+yarn run prod
 ```
+and freeze your process list by:
 
-or **pm2** as well.
+```bash
+pm2 save
+```
