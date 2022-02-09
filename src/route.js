@@ -8,7 +8,7 @@ function addRoutes(router, routes, routeGroup) {
     routes.forEach((r, i) => {
         routeGroup && (i === 0) ? console.log(`process ${routeGroup}`) : undefined;
         console.log(`  ${r[0].padEnd(10, '.')}${r[1]}`);
-        router[r[0]](r[1], r[2]);
+        router[r[0]](r[1], ...r.slice(2));
     })
 }
 
