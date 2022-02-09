@@ -4,7 +4,8 @@
     "koa": "^2.13.4",
     "koa-body": "^4.2.0",
     "koa-logger": "^3.2.1",
-    "koa-router": "^10.1.1"
+    "koa-router": "^10.1.1",
+    "lodash": "^4.17.21"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
@@ -15,8 +16,8 @@
     "webpack-cli": "^4.9.1"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development nodemon src/index.js --watch src/",
-    "test": "cross-env NODE_ENV=test mocha",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js --watch src --watch config",
+    "test": "cross-env NODE_ENV=test mocha --watch",
     "prod": "cross-env NODE_ENV=production pm2 start src/index.js"
   }
 }

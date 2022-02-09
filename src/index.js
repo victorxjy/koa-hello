@@ -1,6 +1,7 @@
 const app = require('./app');
-const { mainPort: port } = require('../config');
+const { port } = require('../config');
 
-
-app.listen(port);
-console.log(`Koa-hello start in http://localhost:${port}`);
+(async () => {
+    app.listen(port);
+    console.log(`Koa-hello start in http://localhost:${port}`);
+})()

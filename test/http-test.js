@@ -1,29 +1,28 @@
-const fs = require('fs');
-const path = require('path');
+const { mapValues } = require('lodash');
 
 const app = require('../src/app');
-const { testPort: port } = require('../config');
+const { port } = require('../config');
+const autoRequire = require('../src/lib/autoRequire');
 
-describe('#test server', () => {
-    let server = app.listen(port);
-    before(() => { console.log('test start~') });
+describe('#test server', async () => {
+    var server;
+    server = app.listen(port);
+    before(() => {
+        // console.log('test start~');
+    });
     after((done) => {
         server.close(done);
-        console.log('test end~');
+        console.log('server close~');
     });
-    let httpDir = path.resolve(__dirname, 'http');
-    fs.readdirSync(httpDir)
-        .filter(f => f.endsWith('.js'))
-        .forEach(f => {
-            let testUnit = require(path.resolve(httpDir, f))(server);
-            describe(`#test ${f}`, () => {
-                for (const desc in testUnit) {
-                    if (Object.hasOwnProperty.call(testUnit, desc)) {
-                        const func = testUnit[desc];
-                        it(desc, func);
-                    }
+    mapValues(new autoRequire(__dirname, 'http'), (value) => {
+        let testUnit = value(server);
+        describe(`#test ${'>'.repeat(20)}`, () => {
+            for (const desc in testUnit) {
+                if (Object.hasOwnProperty.call(testUnit, desc)) {
+                    const func = testUnit[desc];
+                    it(desc, func);
                 }
-            })
+            }
         })
-
+    })
 })
